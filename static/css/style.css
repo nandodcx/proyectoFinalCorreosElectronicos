@@ -1,0 +1,98 @@
+/* Estilos adicionales para el diseño CRM */
+
+/* Transiciones suaves */
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar personalizado para el tema oscuro */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #182b34;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #315668;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #25aff4;
+}
+
+/* Efectos de hover para las tablas */
+.table-row-hover:hover {
+    background-color: rgba(37, 175, 244, 0.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Badges para tipos de email */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-gmail { 
+    background-color: rgba(219, 68, 55, 0.2); 
+    color: #DB4437; 
+    border: 1px solid rgba(219, 68, 55, 0.3);
+}
+
+.badge-outlook { 
+    background-color: rgba(0, 120, 212, 0.2); 
+    color: #0078D4; 
+    border: 1px solid rgba(0, 120, 212, 0.3);
+}
+
+.badge-hotmail { 
+    background-color: rgba(0, 120, 212, 0.2); 
+    color: #0078D4; 
+    border: 1px solid rgba(0, 120, 212, 0.3);
+}
+
+.badge-yahoo { 
+    background-color: rgba(96, 1, 210, 0.2); 
+    color: #6001D2; 
+    border: 1px solid rgba(96, 1, 210, 0.3);
+}
+
+.badge-empresa { 
+    background-color: rgba(37, 175, 244, 0.2); 
+    color: #25aff4; 
+    border: 1px solid rgba(37, 175, 244, 0.3);
+}
+
+.badge-custom1 { 
+    background-color: rgba(255, 107, 107, 0.2); 
+    color: #FF6B6B; 
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.badge-custom2 { 
+    background-color: rgba(78, 205, 196, 0.2); 
+    color: #4ECDC4; 
+    border: 1px solid rgba(78, 205, 196, 0.3);
+}
+
+.badge-custom3 { 
+    background-color: rgba(69, 183, 209, 0.2); 
+    color: #45B7D1; 
+    border: 1px solid rgba(69, 183, 209, 0.3);
+}

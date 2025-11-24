@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>CRM Dashboard - Gestión de Usuarios</title>
+    <!-- CORREGIDO: Usar rutas absolutas para archivos estáticos -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25aff4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101c22",
+                        "surface-dark": "#182b34",
+                        "border-dark": "#315668",
+                        "text-primary-dark": "#EAEAEA",
+                        "text-secondary-dark": "#90b7cb"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    boxShadow: {
+                        'primary-glow': '0 0 15px 1px rgba(37, 175, 244, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="relative flex min-h-screen w-full">
+        <!-- SideNavBar -->
+        <aside class="flex flex-col w-64 bg-background-light dark:bg-background-dark border-r border-border-dark/50 p-4">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white">group</span>
+                </div>
+                <h1 class="text-text-primary-dark text-lg font-bold">CRM Dashboard</h1>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors" href="#dashboard">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <p class="text-sm font-medium">Dashboard</p>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary-dark hover:bg-surface-dark hover:text-text-primary-dark transition-colors" href="#users">
+                    <span class="material-symbols-outlined">group</span>
+                    <p class="text-sm font-medium">Users</p>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary-dark hover:bg-surface-dark hover:text-text-primary-dark transition-colors" href="#emails">
+                    <span class="material-symbols-outlined">mail</span>
+                    <p class="text-sm font-medium">Emails</p>
+                </a>
+            </nav>
+            <div class="mt-auto">
+                <!-- Can add footer elements here -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col">
+            <!-- TopNavBar -->
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark/50 px-10 py-3 sticky top-0 bg-background-dark/80 backdrop-blur-sm z-10">
+                <div class="flex items-center gap-8">
+                    <h2 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em]" id="page-title">Dashboard Overview</h2>
+                </div>
+                <div class="flex flex-1 justify-end items-center gap-6">
+                    <div class="flex gap-2">
+                        <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-surface-dark text-text-secondary-dark hover:text-text-primary-dark transition-colors">
+                            <span class="material-symbols-outlined">notifications</span>
+                        </button>
+                    </div>
+                    <div class="bg-primary flex items-center justify-center aspect-square rounded-full size-10">
+                        <span class="material-symbols-outlined text-white">person</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="p-6 lg:p-10 space-y-8">
+                <!-- Dashboard Section -->
+                <div id="dashboard">
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-primary-glow">
+                            <p class="text-text-primary-dark text-base font-medium">Total Users</p>
+                            <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="total-users-count">0</p>
+                            <div class="flex gap-2 items-center">
+                                <p class="text-text-secondary-dark text-sm font-normal">All Time</p>
+                                <p class="text-green-400 text-sm font-medium" id="users-growth">+0</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-primary-glow">
+                            <p class="text-text-primary-dark text-base font-medium">Total Emails</p>
+                            <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="total-emails-count">0</p>
+                            <div class="flex gap-2 items-center">
+                                <p class="text-text-secondary-dark text-sm font-normal">All Time</p>
+                                <p class="text-green-400 text-sm font-medium" id="emails-growth">+0</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-primary-glow">
+                            <p class="text-text-primary-dark text-base font-medium">Email Providers</p>
+                            <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="providers-count">8 Types</p>
+                            <div class="flex gap-2 items-center">
+                                <p class="text-text-secondary-dark text-sm font-normal">Available</p>
+                                <p class="text-primary text-sm font-medium">Gmail, Outlook, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions Cards -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                        <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
+                            <p class="text-text-primary-dark text-base font-medium">Quick Actions</p>
+                            <div class="space-y-4">
+                                <div class="flex gap-2">
+                                    <button id="btn-generate-users" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
+                                        <span class="material-symbols-outlined">group_add</span>
+                                        <span class="text-sm font-medium">Generate Random Users</span>
+                                    </button>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button id="btn-generate-emails" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span class="text-sm font-medium">Generate Emails (Fast)</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
+                            <p class="text-text-primary-dark text-base font-medium">Mass Actions</p>
+                            <div class="space-y-4">
+                                <div class="flex gap-2">
+                                    <input type="number" id="mass-users-count" min="1" max="10000" value="100" class="flex-1 bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Number of users">
+                                    <button id="btn-mass-generate" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
+                                        Generate
+                                    </button>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button id="btn-clear-users" class="flex-1 px-4 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors text-sm font-medium">
+                                        Clear All Users
+                                    </button>
+                                    <button id="btn-clear-emails" class="flex-1 px-4 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors text-sm font-medium">
+                                        Clear All Emails
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Section -->
+                <div id="users" class="hidden">
+                    <div class="bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
+                        <div class="flex justify-between items-center p-6 border-b border-border-dark/50">
+                            <h2 class="text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Manage Users</h2>
+                            <button id="btn-add-user" class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
+                                <span class="material-symbols-outlined text-base">add</span>
+                                Add New User
+                            </button>
+                        </div>
+                        
+                        <!-- Add User Form -->
+                        <div id="add-user-form" class="p-6 border-b border-border-dark/50 hidden">
+                            <form id="form-user" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">First Name</label>
+                                    <input type="text" id="user-firstname" name="firstname" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Enter first name">
+                                </div>
+                                <div>
+                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Last Name</label>
+                                    <input type="text" id="user-lastname" name="lastname" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Enter last name">
+                                </div>
+                                <div>
+                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Age</label>
+                                    <input type="number" id="user-age" name="age" min="1" max="120" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Enter age">
+                                </div>
+                                <div class="md:col-span-3 flex gap-2">
+                                    <button type="submit" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
+                                        Save User
+                                    </button>
+                                    <button type="button" id="btn-cancel-add" class="px-4 py-2 rounded-lg bg-surface-dark text-text-secondary-dark text-sm font-medium hover:bg-background-dark transition-colors">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Users Table -->
+                        <div class="p-2 @container">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="border-b border-border-dark/50">
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">ID</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">First Name</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Last Name</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Age</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Created</th>
+                                            <th class="px-4 py-3 text-left text-text-secondary-dark text-sm font-medium">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="users-table-body">
+                                        <!-- Users will be loaded here dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emails Section -->
+                <div id="emails" class="hidden">
+                    <div class="bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
+                        <div class="flex justify-between items-center p-6 border-b border-border-dark/50">
+                            <h2 class="text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Generated Emails</h2>
+                            <div class="flex gap-2">
+                                <button id="btn-refresh-emails" class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors text-sm font-medium">
+                                    <span class="material-symbols-outlined text-base">refresh</span>
+                                    Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-2 @container">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="border-b border-border-dark/50">
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">User</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Provider</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Email Address</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Generated</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="emails-table-body">
+                                        <!-- Emails will be loaded here dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Progress Modal -->
+    <div id="progress-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-surface-dark rounded-xl border border-border-dark/50 p-6 w-96">
+            <h3 class="text-text-primary-dark text-lg font-bold mb-4" id="progress-title">Processing...</h3>
+            <div class="w-full bg-background-dark rounded-full h-2.5 mb-4">
+                <div id="progress-bar" class="bg-primary h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+            <div class="flex justify-between text-text-secondary-dark text-sm">
+                <span id="progress-text">Starting...</span>
+                <span id="progress-percent">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Toast -->
+    <div id="message-toast" class="fixed top-4 right-4 p-4 rounded-lg z-50 hidden transition-opacity duration-300">
+        <div class="flex items-center gap-3">
+            <span id="toast-icon" class="material-symbols-outlined"></span>
+            <span id="toast-message" class="text-sm font-medium"></span>
+        </div>
+    </div>
+
+    <!-- CORREGIDO: Usar ruta absoluta para el JavaScript -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
