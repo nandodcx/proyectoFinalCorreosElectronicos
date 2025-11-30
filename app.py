@@ -148,6 +148,14 @@ def generar_correos():
         print("🚀 Iniciando generación MASIVA de correos...")
         start_time = datetime.now()
         
+        # Obtener tipos específicos si se proporcionan
+        tipos_seleccionados = None
+        if request.is_json:
+            data = request.get_json()
+            if data and 'tipos' in data:
+                tipos_seleccionados = data['tipos']
+                print(f"📧 Generando correos para tipos seleccionados: {tipos_seleccionados}")
+        
         usuarios = db.obtener_usuarios()
         
         if not usuarios:
@@ -155,8 +163,8 @@ def generar_correos():
         
         print(f"📧 Generando correos para {len(usuarios)} usuarios...")
         
-        # OPTIMIZACIÓN: Usar inserción por lotes
-        correos_generados = generar_correos_masivos(usuarios)
+        # Pasar los tipos seleccionados a la función de generación
+        correos_generados = generar_correos_masivos(usuarios, tipos_seleccionados)
         
         end_time = datetime.now()
         tiempo_total = (end_time - start_time).total_seconds()
@@ -166,7 +174,8 @@ def generar_correos():
         return jsonify({
             'mensaje': f'Se generaron {len(correos_generados)} correos electrónicos en {tiempo_total:.2f} segundos',
             'correos': correos_generados,
-            'tiempo': tiempo_total
+            'tiempo': tiempo_total,
+            'tipos_generados': list(set(c['tipo'] for c in correos_generados)) if correos_generados else []
         })
     
     except Exception as e:
@@ -237,13 +246,20 @@ def generar_usuarios_masivos(cantidad):
     
     return usuarios_generados
 
-def generar_correos_masivos(usuarios):
-    """Genera correos para todos los usuarios usando inserción por lotes"""
+def generar_correos_masivos(usuarios, tipos_seleccionados=None):
+    """Genera correos para todos los usuarios usando inserción por lotes, con tipos opcionales"""
     todos_los_correos = []
     
     for usuario in usuarios:
         correos_generados = generar_correos_usuario(usuario['nombre'], usuario['apellido'])
-        for tipo, correo in correos_generados.items():
+        
+        # Filtrar por tipos seleccionados si se especifican
+        if tipos_seleccionados:
+            correos_filtrados = {tipo: correo for tipo, correo in correos_generados.items() if tipo in tipos_seleccionados}
+        else:
+            correos_filtrados = correos_generados
+        
+        for tipo, correo in correos_filtrados.items():
             todos_los_correos.append({
                 'usuario_id': usuario['id'],
                 'tipo': tipo,

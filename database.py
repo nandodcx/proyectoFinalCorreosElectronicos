@@ -131,8 +131,6 @@ class Database:
                 connection.close()
         return correo_id
     
-    # ... (los demás métodos se mantienen igual)
-    
     def obtener_usuarios(self):
         connection = self.get_connection()
         usuarios = []

@@ -61,7 +61,7 @@ class LoadTester:
                 'samples': len(times)
             }
             
-            print(f"📊 Creación individual: Avg {avg_time:.3f}s, Max {max_time:.3f}s, Min {min_time:.3f}s")
+            print(f"Creación individual: Avg {avg_time:.3f}s, Max {max_time:.3f}s, Min {min_time:.3f}s")
         
         return times
     
@@ -88,15 +88,15 @@ class LoadTester:
                 time_per_user = batch_time / users_created if users_created > 0 else 0
                 
                 print(f"✅ Lote de {users_created} usuarios: {batch_time:.3f}s total")
-                print(f"⏱️  Tiempo por usuario: {time_per_user:.3f}s")
+                print(f"Tiempo por usuario: {time_per_user:.3f}s")
                 
                 return batch_time, time_per_user
             else:
-                print(f"❌ Error en creación por lote: {response.status_code}")
+                print(f"Error en creación por lote: {response.status_code}")
                 return None, None
                 
         except Exception as e:
-            print(f"❌ Exception en creación por lote: {str(e)}")
+            print(f"Exception en creación por lote: {str(e)}")
             return None, None
     
     def test_email_generation_performance(self):
@@ -126,7 +126,7 @@ class LoadTester:
                 }
                 
                 print(f"✅ {emails_generated} correos generados en {generation_time:.3f}s")
-                print(f"⏱️  Tiempo por correo: {time_per_email:.3f}s")
+                print(f"Tiempo por correo: {time_per_email:.3f}s")
                 
                 return generation_time, emails_generated
             else:
@@ -193,11 +193,11 @@ class LoadTester:
             
             success_rate = (len(times) / num_concurrent) * 100
             
-            print(f"📊 Operaciones concurrentes:")
-            print(f"  ✅ Solicitudes exitosas: {len(times)}/{num_concurrent} ({success_rate:.1f}%)")
-            print(f"  ⏱️  Tiempo promedio: {avg_time:.3f}s")
-            print(f"  📈 Tiempo máximo: {max_time:.3f}s")
-            print(f"  📉 Tiempo mínimo: {min_time:.3f}s")
+            print(f"Operaciones concurrentes:")
+            print(f" Solicitudes exitosas: {len(times)}/{num_concurrent} ({success_rate:.1f}%)")
+            print(f" Tiempo promedio: {avg_time:.3f}s")
+            print(f" Tiempo máximo: {max_time:.3f}s")
+            print(f" Tiempo mínimo: {min_time:.3f}s")
         
         # Limpiar usuarios creados
         for user_id in user_ids:
@@ -210,7 +210,7 @@ class LoadTester:
     
     def run_comprehensive_test(self):
         """Ejecutar suite completa de pruebas de rendimiento"""
-        print("🚀 INICIANDO PRUEBAS COMPLETAS DE RENDIMIENTO")
+        print("INICIANDO PRUEBAS COMPLETAS DE RENDIMIENTO")
         print("=" * 60)
         
         # 1. Creación individual de usuarios
@@ -234,19 +234,19 @@ class LoadTester:
     
     def print_summary(self):
         """Imprimir resumen de resultados"""
-        print("\n📊 RESUMEN DE RENDIMIENTO")
+        print("\n RESUMEN DE RENDIMIENTO")
         print("=" * 60)
         
         if self.results['user_creation']:
             data = self.results['user_creation']
-            print(f"👤 Creación individual de usuarios:")
+            print(f"Creación individual de usuarios:")
             print(f"   • Muestras: {data['samples']}")
             print(f"   • Tiempo promedio: {data['average']:.3f}s")
             print(f"   • Rango: {data['min']:.3f}s - {data['max']:.3f}s")
         
         if self.results['email_generation']:
             data = self.results['email_generation']
-            print(f"📧 Generación de correos:")
+            print(f"Generación de correos:")
             print(f"   • Total correos: {data['emails_count']}")
             print(f"   • Tiempo total: {data['total_time']:.3f}s")
             print(f"   • Tiempo/correo: {data['time_per_email']:.3f}s")
@@ -254,7 +254,7 @@ class LoadTester:
         if self.results['concurrent_operations']:
             data = self.results['concurrent_operations']
             success_rate = (data['successful_requests'] / data['total_requests']) * 100
-            print(f"🔀 Operaciones concurrentes:")
+            print(f"Operaciones concurrentes:")
             print(f"   • Tasa de éxito: {success_rate:.1f}%")
             print(f"   • Tiempo promedio: {data['average']:.3f}s")
 

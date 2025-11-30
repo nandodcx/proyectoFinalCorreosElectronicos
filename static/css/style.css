@@ -39,6 +39,21 @@
     animation: fadeIn 0.3s ease-out;
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-down {
+    animation: slideDown 0.3s ease-out;
+}
+
 /* Badges para tipos de email */
 .badge {
     display: inline-block;
@@ -95,4 +110,195 @@
     background-color: rgba(69, 183, 209, 0.2); 
     color: #45B7D1; 
     border: 1px solid rgba(69, 183, 209, 0.3);
+}
+
+/* Estilos para los filtros */
+.filter-section {
+    transition: all 0.3s ease;
+}
+
+.filter-section:hover {
+    background-color: rgba(37, 175, 244, 0.05);
+}
+
+/* Estilos para el modal de selección de tipos */
+.modal-backdrop {
+    backdrop-filter: blur(4px);
+}
+
+.email-type-checkbox {
+    accent-color: #25aff4;
+}
+
+/* Estilos para estados de filtro activo */
+.filter-active {
+    border-color: #25aff4;
+    box-shadow: 0 0 0 2px rgba(37, 175, 244, 0.2);
+}
+
+/* Mejoras de accesibilidad */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .filter-section {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .filter-section select,
+    .filter-section input {
+        width: 100%;
+    }
+}
+
+/* Estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #25aff4;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mejoras para tablas */
+.table-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.table-row {
+    transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+    background-color: rgba(37, 175, 244, 0.05);
+}
+
+/* Estilos para formularios */
+.form-input:focus {
+    border-color: #25aff4;
+    box-shadow: 0 0 0 2px rgba(37, 175, 244, 0.2);
+}
+
+/* Estilos para botones */
+.btn-primary {
+    background: linear-gradient(135deg, #25aff4 0%, #1e90ff 100%);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 175, 244, 0.3);
+}
+
+.btn-secondary {
+    background-color: rgba(37, 175, 244, 0.1);
+    color: #25aff4;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(37, 175, 244, 0.2);
+}
+
+/* Estilos para tarjetas */
+.card {
+    backdrop-filter: blur(10px);
+    background: rgba(24, 43, 52, 0.8);
+    border: 1px solid rgba(49, 86, 104, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(37, 175, 244, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para la barra de progreso */
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Estilos para mensajes toast */
+.toast {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Estilos para modales */
+.modal-content {
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Estilos para checkboxes personalizados */
+.custom-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #315668;
+    border-radius: 4px;
+    background-color: #101c22;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox:checked {
+    background-color: #25aff4;
+    border-color: #25aff4;
+}
+
+.custom-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-checkbox:hover {
+    border-color: #25aff4;
 }

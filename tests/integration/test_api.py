@@ -12,7 +12,7 @@ class TestCRMAPIIntegration(unittest.TestCase):
         """Configuración antes de cada test"""
         self.session = requests.Session()
         self.test_users = []
-        print(f"\n🔗 Configurando prueba en: {self.BASE_URL}")
+        print(f"\n Configurando prueba en: {self.BASE_URL}")
     
     def tearDown(self):
         """Limpieza después de cada test"""
@@ -126,7 +126,7 @@ class TestCRMAPIIntegration(unittest.TestCase):
         
         generation_time = end_time - start_time
         print(f"✅ Generados {len(data['correos'])} correos en {data['tiempo']:.2f}s")
-        print(f"⏱️  Tiempo real: {generation_time:.2f}s")
+        print(f"Tiempo real: {generation_time:.2f}s")
         
         # Verificar que los correos están en la lista
         response = self.session.get(f"{self.BASE_URL}/correos")
@@ -169,10 +169,10 @@ class TestCRMAPIIntegration(unittest.TestCase):
         response = self.session.get(f"{self.BASE_URL}/correos")
         emails_count = len(response.json())
         
-        print(f"📊 Estadísticas finales - Usuarios: {users_count}, Correos: {emails_count}")
+        print(f"Estadísticas finales - Usuarios: {users_count}, Correos: {emails_count}")
 
 if __name__ == '__main__':
-    print("🚀 INICIANDO PRUEBAS DE INTEGRACIÓN API")
+    print("INICIANDO PRUEBAS DE INTEGRACIÓN API")
     print("=" * 60)
     
     # Verificar que el servidor esté corriendo
@@ -182,7 +182,7 @@ if __name__ == '__main__':
             print("✅ Servidor detectado, iniciando pruebas...")
             unittest.main(verbosity=2)
         else:
-            print("❌ Servidor no responde correctamente")
+            print("Servidor no responde correctamente")
     except requests.ConnectionError:
-        print("❌ No se puede conectar al servidor en http://localhost:5000")
-        print("💡 Asegúrate de que el servidor Flask esté ejecutándose")
+        print("No se puede conectar al servidor en http://localhost:5000")
+        print("Asegúrate de que el servidor Flask esté ejecutándose")

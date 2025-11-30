@@ -13,7 +13,7 @@ class TestCRMUI(unittest.TestCase):
     
     def setUp(self):
         """Configuración antes de cada test"""
-        print("\n🖥️  Configurando navegador para pruebas UI")
+        print("\nConfigurando navegador para pruebas UI")
         
         # Configurar Chrome en modo headless
         chrome_options = Options()
@@ -38,7 +38,7 @@ class TestCRMUI(unittest.TestCase):
         
         # Verificar elementos clave
         self.assertIn("CRM Dashboard", self.driver.title)
-        self.assertIn("Dashboard Overview", self.driver.page_source)
+        self.assertIn("Panel Principal", self.driver.page_source)
         
         # Verificar que se cargan las secciones principales
         dashboard_section = self.driver.find_element(By.ID, "dashboard")
@@ -52,8 +52,8 @@ class TestCRMUI(unittest.TestCase):
         
         self.driver.get(self.BASE_URL)
         
-        # Navegar a Users
-        users_link = self.driver.find_element(By.XPATH, "//a[contains(@href, '#users')]")
+        # Navegar a Usuarios
+        users_link = self.driver.find_element(By.XPATH, "//a[.//p[text()='Usuarios']]")
         users_link.click()
         time.sleep(1)
         
@@ -62,27 +62,27 @@ class TestCRMUI(unittest.TestCase):
         
         # Verificar que el título cambió
         page_title = self.driver.find_element(By.ID, "page-title")
-        self.assertIn("User Management", page_title.text)
-        print("✅ Navegación a Users funcionando")
+        self.assertIn("Gestión de Usuarios", page_title.text)
+        print("✅ Navegación a Usuarios funcionando")
         
-        # Navegar a Emails
-        emails_link = self.driver.find_element(By.XPATH, "//a[contains(@href, '#emails')]")
+        # Navegar a Correos
+        emails_link = self.driver.find_element(By.XPATH, "//a[.//p[text()='Correos']]")
         emails_link.click()
         time.sleep(1)
         
         emails_section = self.driver.find_element(By.ID, "emails")
         self.assertFalse("hidden" in emails_section.get_attribute("class"))
         
-        self.assertIn("Email Management", page_title.text)
-        print("✅ Navegación a Emails funcionando")
+        self.assertIn("Gestión de Correos", page_title.text)
+        print("✅ Navegación a Correos funcionando")
         
-        # Volver a Dashboard
-        dashboard_link = self.driver.find_element(By.XPATH, "//a[contains(@href, '#dashboard')]")
+        # Volver a Panel Principal
+        dashboard_link = self.driver.find_element(By.XPATH, "//a[.//p[text()='Panel Principal']]")
         dashboard_link.click()
         time.sleep(1)
         
-        self.assertIn("Dashboard Overview", page_title.text)
-        print("✅ Navegación a Dashboard funcionando")
+        self.assertIn("Panel Principal", page_title.text)
+        print("✅ Navegación a Panel Principal funcionando")
     
     def test_3_user_creation_ui(self):
         """Test 3: Creación de usuario desde la UI"""
@@ -90,8 +90,8 @@ class TestCRMUI(unittest.TestCase):
         
         self.driver.get(self.BASE_URL)
         
-        # Navegar a Users
-        users_link = self.driver.find_element(By.XPATH, "//a[contains(@href, '#users')]")
+        # Navegar a Usuarios
+        users_link = self.driver.find_element(By.XPATH, "//a[.//p[text()='Usuarios']]")
         users_link.click()
         time.sleep(1)
         
@@ -115,9 +115,6 @@ class TestCRMUI(unittest.TestCase):
         age.send_keys("30")
         
         print("✅ Formulario de usuario completado")
-        
-        # Nota: No enviamos el formulario para evitar cambios en la BD
-        # En un entorno real, aquí se haría el submit
     
     def test_4_dashboard_stats(self):
         """Test 4: Verificar estadísticas del dashboard"""
@@ -168,7 +165,7 @@ class TestCRMUI(unittest.TestCase):
         print("✅ Campo de entrada para usuarios masivos funcionando")
 
 if __name__ == '__main__':
-    print("🚀 INICIANDO PRUEBAS DE INTERFAZ DE USUARIO")
+    print("INICIANDO PRUEBAS DE INTERFAZ DE USUARIO")
     print("=" * 60)
-    print("💡 Asegúrate de tener ChromeDriver instalado")
+    print("Asegúrate de tener ChromeDriver instalado")
     unittest.main(verbosity=2)

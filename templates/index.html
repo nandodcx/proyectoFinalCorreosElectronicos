@@ -4,7 +4,6 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>CRM Dashboard - Gestión de Usuarios</title>
-    <!-- CORREGIDO: Usar rutas absolutas para archivos estáticos -->
     <link rel="stylesheet" href="/static/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
@@ -46,7 +45,7 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display">
     <div class="relative flex min-h-screen w-full">
-        <!-- SideNavBar -->
+        <!-- Barra Lateral -->
         <aside class="flex flex-col w-64 bg-background-light dark:bg-background-dark border-r border-border-dark/50 p-4">
             <div class="flex items-center gap-3 mb-8">
                 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-primary flex items-center justify-center">
@@ -57,28 +56,28 @@
             <nav class="flex flex-col gap-2">
                 <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors" href="#dashboard">
                     <span class="material-symbols-outlined">dashboard</span>
-                    <p class="text-sm font-medium">Dashboard</p>
+                    <p class="text-sm font-medium">Panel Principal</p>
                 </a>
                 <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary-dark hover:bg-surface-dark hover:text-text-primary-dark transition-colors" href="#users">
                     <span class="material-symbols-outlined">group</span>
-                    <p class="text-sm font-medium">Users</p>
+                    <p class="text-sm font-medium">Usuarios</p>
                 </a>
                 <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary-dark hover:bg-surface-dark hover:text-text-primary-dark transition-colors" href="#emails">
                     <span class="material-symbols-outlined">mail</span>
-                    <p class="text-sm font-medium">Emails</p>
+                    <p class="text-sm font-medium">Correos</p>
                 </a>
             </nav>
             <div class="mt-auto">
-                <!-- Can add footer elements here -->
+                <!-- Elementos del pie de página aquí -->
             </div>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Contenido Principal -->
         <main class="flex-1 flex flex-col">
-            <!-- TopNavBar -->
+            <!-- Barra Superior -->
             <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark/50 px-10 py-3 sticky top-0 bg-background-dark/80 backdrop-blur-sm z-10">
                 <div class="flex items-center gap-8">
-                    <h2 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em]" id="page-title">Dashboard Overview</h2>
+                    <h2 class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em]" id="page-title">Panel Principal</h2>
                 </div>
                 <div class="flex flex-1 justify-end items-center gap-6">
                     <div class="flex gap-2">
@@ -92,72 +91,78 @@
                 </div>
             </header>
 
-            <!-- Page Content -->
+            <!-- Contenido de la Página -->
             <div class="p-6 lg:p-10 space-y-8">
-                <!-- Dashboard Section -->
+                <!-- Sección Panel Principal -->
                 <div id="dashboard">
-                    <!-- Stats Cards -->
+                    <!-- Tarjetas de Estadísticas -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-primary-glow">
-                            <p class="text-text-primary-dark text-base font-medium">Total Users</p>
+                            <p class="text-text-primary-dark text-base font-medium">Total de Usuarios</p>
                             <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="total-users-count">0</p>
                             <div class="flex gap-2 items-center">
-                                <p class="text-text-secondary-dark text-sm font-normal">All Time</p>
+                                <p class="text-text-secondary-dark text-sm font-normal">Total General</p>
                                 <p class="text-green-400 text-sm font-medium" id="users-growth">+0</p>
                             </div>
                         </div>
                         <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-primary-glow">
-                            <p class="text-text-primary-dark text-base font-medium">Total Emails</p>
+                            <p class="text-text-primary-dark text-base font-medium">Total de Correos</p>
                             <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="total-emails-count">0</p>
                             <div class="flex gap-2 items-center">
-                                <p class="text-text-secondary-dark text-sm font-normal">All Time</p>
+                                <p class="text-text-secondary-dark text-sm font-normal">Total General</p>
                                 <p class="text-green-400 text-sm font-medium" id="emails-growth">+0</p>
                             </div>
                         </div>
                         <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-primary-glow">
-                            <p class="text-text-primary-dark text-base font-medium">Email Providers</p>
-                            <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="providers-count">8 Types</p>
+                            <p class="text-text-primary-dark text-base font-medium">Proveedores de Email</p>
+                            <p class="text-text-primary-dark tracking-light text-[32px] font-bold leading-tight truncate" id="providers-count">8 Tipos</p>
                             <div class="flex gap-2 items-center">
-                                <p class="text-text-secondary-dark text-sm font-normal">Available</p>
+                                <p class="text-text-secondary-dark text-sm font-normal">Disponibles</p>
                                 <p class="text-primary text-sm font-medium">Gmail, Outlook, etc.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Actions Cards -->
+                    <!-- Tarjetas de Acciones -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
                         <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
-                            <p class="text-text-primary-dark text-base font-medium">Quick Actions</p>
+                            <p class="text-text-primary-dark text-base font-medium">Acciones Rápidas</p>
                             <div class="space-y-4">
                                 <div class="flex gap-2">
                                     <button id="btn-generate-users" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
                                         <span class="material-symbols-outlined">group_add</span>
-                                        <span class="text-sm font-medium">Generate Random Users</span>
+                                        <span class="text-sm font-medium">Generar Usuarios Aleatorios</span>
                                     </button>
                                 </div>
                                 <div class="flex gap-2">
                                     <button id="btn-generate-emails" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
                                         <span class="material-symbols-outlined">mail</span>
-                                        <span class="text-sm font-medium">Generate Emails (Fast)</span>
+                                        <span class="text-sm font-medium">Generar Todos los Correos</span>
+                                    </button>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button id="btn-generate-selected-emails" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span class="text-sm font-medium">Generar Correos Seleccionados</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col gap-4 p-6 bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
-                            <p class="text-text-primary-dark text-base font-medium">Mass Actions</p>
+                            <p class="text-text-primary-dark text-base font-medium">Acciones Masivas</p>
                             <div class="space-y-4">
                                 <div class="flex gap-2">
-                                    <input type="number" id="mass-users-count" min="1" max="10000" value="100" class="flex-1 bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Number of users">
+                                    <input type="number" id="mass-users-count" min="1" max="10000" value="100" class="flex-1 bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Número de usuarios">
                                     <button id="btn-mass-generate" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
-                                        Generate
+                                        Generar
                                     </button>
                                 </div>
                                 <div class="flex gap-2">
                                     <button id="btn-clear-users" class="flex-1 px-4 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors text-sm font-medium">
-                                        Clear All Users
+                                        Limpiar Todos los Usuarios
                                     </button>
                                     <button id="btn-clear-emails" class="flex-1 px-4 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors text-sm font-medium">
-                                        Clear All Emails
+                                        Limpiar Todos los Correos
                                     </button>
                                 </div>
                             </div>
@@ -165,59 +170,81 @@
                     </div>
                 </div>
 
-                <!-- Users Section -->
+                <!-- Sección Usuarios -->
                 <div id="users" class="hidden">
                     <div class="bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
                         <div class="flex justify-between items-center p-6 border-b border-border-dark/50">
-                            <h2 class="text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Manage Users</h2>
+                            <h2 class="text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Gestión de Usuarios</h2>
                             <button id="btn-add-user" class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
                                 <span class="material-symbols-outlined text-base">add</span>
-                                Add New User
+                                Agregar Nuevo Usuario
                             </button>
                         </div>
                         
-                        <!-- Add User Form -->
+                        <!-- Filtros para Usuarios -->
+                        <div class="flex gap-4 mb-4 px-6">
+                            <div class="flex-1">
+                                <input type="text" id="search-users" placeholder="Buscar usuarios por nombre..." class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2">
+                            </div>
+                            <select id="filter-age" class="bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2">
+                                <option value="">Todas las Edades</option>
+                                <option value="18-25">18-25 años</option>
+                                <option value="26-35">26-35 años</option>
+                                <option value="36-50">36-50 años</option>
+                                <option value="51+">51+ años</option>
+                            </select>
+                            <select id="filter-sort" class="bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2">
+                                <option value="newest">Más Recientes Primero</option>
+                                <option value="oldest">Más Antiguos Primero</option>
+                                <option value="name_asc">Nombre A-Z</option>
+                                <option value="name_desc">Nombre Z-A</option>
+                                <option value="age_asc">Edad Menor-Mayor</option>
+                                <option value="age_desc">Edad Mayor-Menor</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Formulario Agregar Usuario -->
                         <div id="add-user-form" class="p-6 border-b border-border-dark/50 hidden">
                             <form id="form-user" class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
-                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">First Name</label>
-                                    <input type="text" id="user-firstname" name="firstname" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Enter first name">
+                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Nombre</label>
+                                    <input type="text" id="user-firstname" name="firstname" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Ingresar nombre">
                                 </div>
                                 <div>
-                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Last Name</label>
-                                    <input type="text" id="user-lastname" name="lastname" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Enter last name">
+                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Apellido</label>
+                                    <input type="text" id="user-lastname" name="lastname" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Ingresar apellido">
                                 </div>
                                 <div>
-                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Age</label>
-                                    <input type="number" id="user-age" name="age" min="1" max="120" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Enter age">
+                                    <label class="block text-text-secondary-dark text-sm font-medium mb-2">Edad</label>
+                                    <input type="number" id="user-age" name="age" min="1" max="120" required class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2" placeholder="Ingresar edad">
                                 </div>
                                 <div class="md:col-span-3 flex gap-2">
                                     <button type="submit" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
-                                        Save User
+                                        Guardar Usuario
                                     </button>
                                     <button type="button" id="btn-cancel-add" class="px-4 py-2 rounded-lg bg-surface-dark text-text-secondary-dark text-sm font-medium hover:bg-background-dark transition-colors">
-                                        Cancel
+                                        Cancelar
                                     </button>
                                 </div>
                             </form>
                         </div>
                         
-                        <!-- Users Table -->
+                        <!-- Tabla de Usuarios -->
                         <div class="p-2 @container">
                             <div class="overflow-x-auto">
                                 <table class="w-full">
                                     <thead>
                                         <tr class="border-b border-border-dark/50">
                                             <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">ID</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">First Name</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Last Name</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Age</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Created</th>
-                                            <th class="px-4 py-3 text-left text-text-secondary-dark text-sm font-medium">Actions</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Nombre</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Apellido</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Edad</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Creado</th>
+                                            <th class="px-4 py-3 text-left text-text-secondary-dark text-sm font-medium">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="users-table-body">
-                                        <!-- Users will be loaded here dynamically -->
+                                        <!-- Los usuarios se cargarán aquí dinámicamente -->
                                     </tbody>
                                 </table>
                             </div>
@@ -225,31 +252,55 @@
                     </div>
                 </div>
 
-                <!-- Emails Section -->
+                <!-- Sección Correos -->
                 <div id="emails" class="hidden">
                     <div class="bg-surface-dark rounded-xl border border-border-dark/50 shadow-lg">
                         <div class="flex justify-between items-center p-6 border-b border-border-dark/50">
-                            <h2 class="text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Generated Emails</h2>
+                            <h2 class="text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em]">Correos Generados</h2>
                             <div class="flex gap-2">
                                 <button id="btn-refresh-emails" class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors text-sm font-medium">
                                     <span class="material-symbols-outlined text-base">refresh</span>
-                                    Refresh
+                                    Actualizar
                                 </button>
                             </div>
                         </div>
+                        
+                        <!-- Filtros para Correos -->
+                        <div class="flex gap-4 mb-4 px-6">
+                            <div class="flex-1">
+                                <input type="text" id="search-emails" placeholder="Buscar correos..." class="w-full bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2">
+                            </div>
+                            <select id="filter-provider" class="bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2">
+                                <option value="">Todos los Proveedores</option>
+                                <option value="gmail">Gmail</option>
+                                <option value="outlook">Outlook</option>
+                                <option value="hotmail">Hotmail</option>
+                                <option value="yahoo">Yahoo</option>
+                                <option value="empresa">Empresa</option>
+                                <option value="custom1">Personalizado 1</option>
+                                <option value="custom2">Personalizado 2</option>
+                                <option value="custom3">Personalizado 3</option>
+                            </select>
+                            <select id="filter-sort-emails" class="bg-background-dark border-border-dark rounded-md text-text-secondary-dark focus:ring-primary focus:border-primary text-sm px-3 py-2">
+                                <option value="newest">Más Recientes Primero</option>
+                                <option value="oldest">Más Antiguos Primero</option>
+                                <option value="provider">Proveedor A-Z</option>
+                            </select>
+                        </div>
+                        
                         <div class="p-2 @container">
                             <div class="overflow-x-auto">
                                 <table class="w-full">
                                     <thead>
                                         <tr class="border-b border-border-dark/50">
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">User</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Provider</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Email Address</th>
-                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Generated</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Usuario</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Proveedor</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Dirección de Correo</th>
+                                            <th class="px-4 py-3 text-left text-text-primary-dark text-sm font-medium">Generado</th>
                                         </tr>
                                     </thead>
                                     <tbody id="emails-table-body">
-                                        <!-- Emails will be loaded here dynamically -->
+                                        <!-- Los correos se cargarán aquí dinámicamente -->
                                     </tbody>
                                 </table>
                             </div>
@@ -260,21 +311,70 @@
         </main>
     </div>
 
-    <!-- Progress Modal -->
+    <!-- Modal de Progreso -->
     <div id="progress-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
         <div class="bg-surface-dark rounded-xl border border-border-dark/50 p-6 w-96">
-            <h3 class="text-text-primary-dark text-lg font-bold mb-4" id="progress-title">Processing...</h3>
+            <h3 class="text-text-primary-dark text-lg font-bold mb-4" id="progress-title">Procesando...</h3>
             <div class="w-full bg-background-dark rounded-full h-2.5 mb-4">
                 <div id="progress-bar" class="bg-primary h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
             </div>
             <div class="flex justify-between text-text-secondary-dark text-sm">
-                <span id="progress-text">Starting...</span>
+                <span id="progress-text">Iniciando...</span>
                 <span id="progress-percent">0%</span>
             </div>
         </div>
     </div>
 
-    <!-- Message Toast -->
+    <!-- Modal para seleccionar tipos de correo -->
+    <div id="email-types-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-surface-dark rounded-xl border border-border-dark/50 p-6 w-96">
+            <h3 class="text-text-primary-dark text-lg font-bold mb-4">Seleccionar Tipos de Correo a Generar</h3>
+            <div class="space-y-3 mb-6">
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="gmail" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Gmail</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="outlook" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Outlook</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="hotmail" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Hotmail</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="yahoo" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Yahoo</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="empresa" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Empresa</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="custom1" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Personalizado 1</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="custom2" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Personalizado 2</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="email-type" value="custom3" checked class="rounded border-border-dark bg-background-dark text-primary focus:ring-primary">
+                    <span class="text-text-primary-dark text-sm">Personalizado 3</span>
+                </label>
+            </div>
+            <div class="flex gap-2">
+                <button id="btn-generate-selected" class="flex-1 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
+                    Generar Seleccionados
+                </button>
+                <button id="btn-cancel-selection" class="px-4 py-2 rounded-lg bg-surface-dark text-text-secondary-dark text-sm font-medium hover:bg-background-dark transition-colors">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje Toast -->
     <div id="message-toast" class="fixed top-4 right-4 p-4 rounded-lg z-50 hidden transition-opacity duration-300">
         <div class="flex items-center gap-3">
             <span id="toast-icon" class="material-symbols-outlined"></span>
@@ -282,7 +382,6 @@
         </div>
     </div>
 
-    <!-- CORREGIDO: Usar ruta absoluta para el JavaScript -->
     <script src="/static/js/script.js"></script>
 </body>
 </html>
